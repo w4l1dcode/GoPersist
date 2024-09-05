@@ -33,10 +33,10 @@ GoPersist -t <technique> -action <add|remove> [options]
 ```
 
 ### Available Techniques
-schtask: Manage scheduled tasks.
-startup: Manage startup entries.
-service: Manage Windows services.
-reg: Manage registry persistence.
+- schtask: Manage scheduled tasks.
+- startup: Manage startup entries.
+- service: Manage Windows services.
+- reg: Manage registry persistence.
 
 ### Command-Line Flags
 #### Scheduled Task
