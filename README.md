@@ -7,7 +7,7 @@ GoPersist is a command-line utility designed for managing persistence techniques
 - Windows Services: Create, start, and remove Windows services with specified executables and arguments.
 - Registry Persistence: Add and remove registry entries for persistence.
 
-- ## Installation
+## Installation
 To use GoPersist, you need to have Go installed on your system. Follow these steps to build and use the program:
 
 ### Clone the repository:
