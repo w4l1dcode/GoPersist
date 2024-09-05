@@ -1,4 +1,4 @@
-package GoPersist
+package persist
 
 import (
 	"fmt"

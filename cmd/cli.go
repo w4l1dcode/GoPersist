@@ -3,7 +3,7 @@ package main
 import (
 	"flag"
 	"fmt"
-	"github.com/w4l1dcode/GoPersist/pkg/GoPersist"
+	"github.com/w4l1dcode/GoPersist/pkg/persist"
 	"golang.org/x/sys/windows"
 	"log"
 	"os"
@@ -82,14 +82,14 @@ func main() {
 				flag.Usage()
 				os.Exit(1)
 			}
-			task := GoPersist.NewSchTask(taskName, schCommand, schArgs, trigger)
+			task := persist.NewSchTask(taskName, schCommand, schArgs, trigger)
 			err := task.CreateTask()
 			if err != nil {
 				log.Fatalf("Failed to create task: %v", err)
 			}
 			log.Println("Scheduled task created successfully.")
 		} else if action == "remove" {
-			task := GoPersist.NewSchTask(taskName, "", "", "")
+			task := persist.NewSchTask(taskName, "", "", "")
 			err := task.RemoveTask()
 			if err != nil {
 				log.Fatalf("Failed to remove task: %v", err)
@@ -105,13 +105,13 @@ func main() {
 				os.Exit(1)
 			}
 			if startupArgs != "" {
-				err := GoPersist.CreateStartupBatchFile(startupCmd, startupArgs, taskName)
+				err := persist.CreateStartupBatchFile(startupCmd, startupArgs, taskName)
 				if err != nil {
 					log.Fatalf("Error creating startup entry: %v", err)
 				}
 				log.Println("Startup entry created successfully.")
 			} else {
-				err := GoPersist.DropFileToStartup(startupCmd, taskName)
+				err := persist.DropFileToStartup(startupCmd, taskName)
 				if err != nil {
 					log.Fatalf("Error dropping file to startup: %v", err)
 				}
@@ -122,7 +122,7 @@ func main() {
 				flag.Usage()
 				os.Exit(1)
 			}
-			err := GoPersist.RemoveFileFromStartup(taskName)
+			err := persist.RemoveFileFromStartup(taskName)
 			if err != nil {
 				log.Fatalf("Error removing file from Startup: %v", err)
 			}
@@ -137,7 +137,7 @@ func main() {
 			panic(err)
 		}
 
-		token, err := GoPersist.OpenCurrentThreadToken()
+		token, err := persist.OpenCurrentThreadToken()
 		if err != nil {
 			panic(err)
 		}
@@ -156,12 +156,12 @@ func main() {
 				flag.Usage()
 				os.Exit(1)
 			}
-			err := GoPersist.CreateService(serviceName, serviceDesc, servicePath, serviceArgs)
+			err := persist.CreateService(serviceName, serviceDesc, servicePath, serviceArgs)
 			if err != nil {
 				log.Fatalf("Error creating service: %v", err)
 			}
 			log.Println("Service created successfully.")
-			err = GoPersist.StartService(serviceName)
+			err = persist.StartService(serviceName)
 			if err != nil {
 				log.Fatalf("Error starting service: %v", err)
 			}
@@ -171,7 +171,7 @@ func main() {
 				flag.Usage()
 				os.Exit(1)
 			}
-			err := GoPersist.DeleteService(serviceName)
+			err := persist.DeleteService(serviceName)
 			if err != nil {
 				log.Fatalf("Error deleting service: %v", err)
 			}
@@ -182,7 +182,7 @@ func main() {
 				flag.Usage()
 				os.Exit(1)
 			}
-			err := GoPersist.CreateServiceBatchFile(startupCmd, serviceArgs, taskName)
+			err := persist.CreateServiceBatchFile(startupCmd, serviceArgs, taskName)
 			if err != nil {
 				log.Fatalf("Error creating service batch file: %v", err)
 			}
@@ -196,7 +196,7 @@ func main() {
 				flag.Usage()
 				os.Exit(1)
 			}
-			err := GoPersist.AddRegistryPersistence(regKey, regValue, regCmd, regArgs)
+			err := persist.AddRegistryPersistence(regKey, regValue, regCmd, regArgs)
 			if err != nil {
 				log.Fatalf("Error adding registry persistence: %v", err)
 			}
@@ -207,7 +207,7 @@ func main() {
 				flag.Usage()
 				os.Exit(1)
 			}
-			err := GoPersist.RemoveRegistryPersistence(regKey, regValue)
+			err := persist.RemoveRegistryPersistence(regKey, regValue)
 			if err != nil {
 				log.Fatalf("Error removing registry persistence: %v", err)
 			}
