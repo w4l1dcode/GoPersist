@@ -13,23 +13,23 @@ To use GoPersist, you need to have Go installed on your system. Follow these ste
 ### Clone the repository:
 ```sh
 git clone https://github.com/yourusername/GoPersist.git
-cd persist
+cd cmd
 ```
 
 ### Build the project:
 ```sh
-go build -o persist cli.go
+go build -o GoPersist cli.go
 ```
 
 ### Run the program:
 ```sh
-./persist --help
+./GoPersist --help
 ```
 
 ## Usage
 ### General Syntax
 ```sh
-persist -t <technique> -action <add|remove> [options]
+GoPersist -t <technique> -action <add|remove> [options]
 ```
 
 ### Available Techniques
@@ -51,12 +51,12 @@ reg: Manage registry persistence.
 - Add a scheduled task:
 
 ```sh
-persist -t schtask -action add -sch-cmd "C:\Windows\System32\WindowsPowerShell\v1.0\powershell.exe" -sch-args "Start-Up notepad.exe" -sch-name "MyTask" -trigger "daily"
+GoPersist -t schtask -action add -sch-cmd "C:\Windows\System32\WindowsPowerShell\v1.0\powershell.exe" -sch-args "Start-Up notepad.exe" -sch-name "MyTask" -trigger "daily"
 ```
 - Remove a scheduled task:
 
 ```sh
-persist -t schtask -action remove -sch-name "MyTask"
+GoPersist -t schtask -action remove -sch-name "MyTask"
 ```
 
 #### Startup Entry
@@ -70,13 +70,13 @@ persist -t schtask -action remove -sch-name "MyTask"
 
 - Add a startup entry:
 ```sh
-persist -t startup -action add -startup-cmd "C:\Windows\System32\WindowsPowerShell\v1.0\powershell.exe" -startup-args "Start-Up notepad.exe" -file "MyStartup"
+GoPersist -t startup -action add -startup-cmd "C:\Windows\System32\WindowsPowerShell\v1.0\powershell.exe" -startup-args "Start-Up notepad.exe" -file "MyStartup"
 ```
 
 - Remove a startup entry:
 
 ```sh
-persist -t startup -action remove -file "MyStartup"
+GoPersist -t startup -action remove -file "MyStartup"
 ```
 
 #### Windows Service
@@ -93,12 +93,12 @@ persist -t startup -action remove -file "MyStartup"
 - Add a Windows service:
 
 ```sh
-persist -t service -action add -svc-name "NotepadService" -svc-desc "Notepad Service" -svc-path "C:\Windows\System32\WindowsPowerShell\v1.0\powershell.exe" -svc-args "Start-Up notepad.exe"
+GoPersist -t service -action add -svc-name "NotepadService" -svc-desc "Notepad Service" -svc-path "C:\Windows\System32\WindowsPowerShell\v1.0\powershell.exe" -svc-args "Start-Up notepad.exe"
 ```
 
 - Remove a Windows service:
 ```sh
-persist -t service -action remove -svc-name "NotepadService"
+GoPersist -t service -action remove -svc-name "NotepadService"
 ```
 
 #### Registry Persistence (reg)
@@ -114,13 +114,13 @@ persist -t service -action remove -svc-name "NotepadService"
 - Add a registry entry:
 
 ```sh
-persist -t reg -action add -reg-key "Software\Microsoft\Windows\CurrentVersion\Run" -reg-val "MyValue" -reg-cmd "C:\Windows\System32\WindowsPowerShell\v1.0\powershell.exe" -reg-args "Start-Up notepad.exe"
+GoPersist -t reg -action add -reg-key "Software\Microsoft\Windows\CurrentVersion\Run" -reg-val "MyValue" -reg-cmd "C:\Windows\System32\WindowsPowerShell\v1.0\powershell.exe" -reg-args "Start-Up notepad.exe"
 ```
 
 - Remove a registry entry:
 
 ```sh
-persist -t reg -action remove -reg-key "Software\Microsoft\Windows\CurrentVersion\Run" -reg-val "MyValue"
+GoPersist -t reg -action remove -reg-key "Software\Microsoft\Windows\CurrentVersion\Run" -reg-val "MyValue"
 ```
 
 ## Contributing
