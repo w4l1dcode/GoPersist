@@ -124,7 +124,7 @@ GoPersist -t reg -action remove -reg-key "Software\Microsoft\Windows\CurrentVers
 ```
 
 ## Contributing
-Feel free to contribute to this project by opening issues or submitting pull requests. For more information on how to contribute, please refer to the CONTRIBUTING.md file in the repository.
+Feel free to contribute to this project by opening issues or submitting pull requests.
 
 ## License
 This project is licensed under the MIT License. See the LICENSE file for details.
